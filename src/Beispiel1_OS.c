@@ -18,7 +18,7 @@ int main(void) {
 	uint32_t* anzahlArtikel = (uint32_t*) calloc(2, sizeof(uint32_t));
 	double* preisArtikel = (double*) calloc(2, sizeof(double));
 	double summeRechnung = 0, summeRabatt = 0;
-	double preis = 0.85;
+	double preis = 1.85;
 	uint32_t anzahlArtikelHelpline[] = {5, 2};	
 	double preisArtikelHelpline[] = {2.1, 1.6};
 	/* Eingabe */ 
@@ -72,7 +72,27 @@ int main(void) {
 	if(preisBirne != preisKiwi)
 	printf("Birne und Kiwi haben unterschiedliche Preise\n");
 
-	
+	/* Falls Bedingung zutrifft */ 
+	if(preis > 0.99)
+		printf("Ein teurer Artikel\n");
+	/* Ansonsten, falls also Bedingung nicht zutrifft */ 
+	else 
+	{
+		printf("Ein billiger Artikel\n");
+		printf("Den nehmen wir\n");
+	}
+
+	double preisBanane = 0.75;
+	/* Logisches Und */ 
+	if(preisBirne < 1.0 && preisBanane < 1.0)
+		printf("Beide Artikel sind billig\n");
+	/* Logisches Oder */ 
+	if(preisApfel > 0.99 || preisBirne > 0.99)
+		printf("Mindestens einer der Artikel ist teuer\n");
+	/* Logisches Nicht */ 
+	if(!(preisBanane > 0.99))
+		printf("Artikel ist nicht teuer\n");
+		
 
 	return EXIT_SUCCESS;
 }
