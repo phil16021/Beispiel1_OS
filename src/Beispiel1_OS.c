@@ -15,14 +15,20 @@
 
 int main(void) {
 	/* Deklaration, teilweise mit Initialisierung */ 
+	/* Startwerte */ 
 	int anzahl, nummer, nochEiner;
 	double preis, summeRechnung;
 	/* Startwerte */ 
-	nummer = 1;
+	nummer = 0;
 	summeRechnung = 0.0;
-	/* Bedingte Wiederholung */ 
-	do 
+	/* Abfrage */ 
+	printf("Wollen Sie Artikel eingeben (Ja=1, Nein=0): ");
+	scanf("%d", &nochEiner);
+	/* Bedingte Wiederholung, Prüfung vorher */ 
+	while(nochEiner == 1)
 	{
+	/* Laufende Nummer erhöhen */ 
+	nummer = nummer + 1;
 	/* Eingabe */ 
 	printf("Artikel %d, Anzahl: ", nummer);
 	scanf("%d", &anzahl);
@@ -33,12 +39,12 @@ int main(void) {
 	/* Abfrage */ 
 	printf("Noch ein Artikel (Ja=1, Nein=0): ");
 	scanf("%d", &nochEiner);
-	/* Laufende Nummer erhöhen */ 
-	nummer = nummer + 1;
 	}
-	while(nochEiner == 1);
 	/* Ausgabe */ 
-	printf("Summe der Rechnung: %.2f Euro\n", summeRechnung);	
+	if(nummer == 0)
+	printf("Keine Eingabe\n");
+	else 
+	printf("Summe der Rechnung: %.2f Euro\n", summeRechnung);
 
 	return EXIT_SUCCESS;
 }
