@@ -14,13 +14,36 @@
 #include "Beispiel1_OS.h"
 
 int main(void) {
-	double einzelpreis = 1.45;
+	int32_t anzahlArtikel = 0;
+	double preis = 0.0;
 
-	printf("Anzahl        Preis\n");
-	for(uint32_t i = 0; i < 10; i++) {
-		printf("%6d", i+1);
-		printf("%8.2f Euro\n",einzelpreis * (i + 1));
-	}
+	do
+	{
+		printf("Anzahl eingeben:  ");
+		scanf("%d", &anzahlArtikel);
+		if(anzahlArtikel < 0)
+		{
+			printf("Anzahl muss positiv sein\n");
+		}
+	} while (anzahlArtikel < 0);
 
-	return EXIT_SUCCESS;
+	do
+	{
+		printf("Preis in Euro eingeben: ");
+		scanf("%lf", &preis);
+		if(preis < 0)
+		{
+			printf("Preis muss positiv sein\n");
+		}
+		if (preis > 10)
+		{
+			printf("Preis muss kleiner als 10 Euro sein\n");
+		}
+		
+	} while (preis < 0 || preis > 10);
+
+	printf("Anzahl: %d\n", anzahlArtikel);
+	printf("Preis: %.2lf Euro\n", preis);
+
+	
 }
