@@ -2,6 +2,7 @@
     "files.associations": {
         "stdio.h": "c",
         "stdlib.h": "c",
-        "beispiel1_os.h": "c"
+        "beispiel1_os.h": "c",
+        "stdint.h": "c"
     }
 }
