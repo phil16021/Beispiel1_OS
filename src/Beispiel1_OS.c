@@ -12,6 +12,7 @@
 #include <stdint.h>
 #include <stdlib.h>
 #include "Beispiel1_OS.h"
+#include <string.h> 
 
 void meinLogo();
 void AusgebenGesamt(double);
@@ -36,20 +37,21 @@ void AusgebenGesamt(double einzelpreis)
 	}
 	
 }
-int main()
+/* Einfache Ausgabe der Werte eines double-Felds */ 
+void ausgabeFeld(double *dFeld, int groesse)
 {
-	meinLogo();
-	/* Mehrfacher Aufruf der Funktion */ 
-	int anzahlFeld[3] = {2, 7, 3};
-	double preisEinzelFeld[3] = {1.45, 0.85, 0.75};
 	int index;
-	double preisGesamt;
-	/* Berechnung und Ausgabe */ 
-	printf("Posten Anzahl Preis einzeln Preis gesamt\n");
-	for(index = 0; index < 3; index++)
+	for(index = 0; index < groesse; index++)
+		printf("Wert %4d: %.2f\n", index+1, dFeld[index]);
+		printf("\n");
+}
+	int main()
 	{
-		preisGesamt = anzahlFeld[index] * preisEinzelFeld[index];
-		printf("%6d %6d %8.2f Euro %7.2f Euro\n", index+1,
-					anzahlFeld[index], preisEinzelFeld[index], preisGesamt);
-	}
+		double preisObstFeld[5] = {1.45, 0.85, 2.10, 1.35, 0.55};
+		double preisFischFeld[3] = {2.75, 1.65, 3.40};
+		/* Ausgabe */ 
+		ausgabeFeld(preisObstFeld, 5);
+		ausgabeFeld(preisFischFeld, 3);
+		return 0;
+
 }
