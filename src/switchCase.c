@@ -34,5 +34,18 @@ int main()
         case 'v':
             printf("Antwort: Vielleicht\n");
     }
+
+    int x = 12, y = 7;
+    if(x < 10 && y++ < 10)
+        printf("Beide kleiner als 10\n");
+
+    printf("%d\n", y);
+    
+    if(x < 20 || y++ < 20)
+        printf("Beide kleiner als 20\n");
+
+    printf("%d\n", y);
+
+
     return 0;
 } 
