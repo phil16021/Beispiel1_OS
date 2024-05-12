@@ -24,6 +24,14 @@ void meinLogo()
 	printf("****************************************\n");
 }
 
+struct artikelTyp
+{
+	/* Komponenten der Struktur */ 
+	int anzahl;
+	double preis;
+	char bezeichnung[30];
+};
+
 /* Definition einer Funktion */ 
 void AusgebenGesamt(double einzelpreis)
 {
@@ -45,13 +53,21 @@ void ausgabeFeld(double *dFeld, int groesse)
 		printf("Wert %4d: %.2f\n", index+1, dFeld[index]);
 		printf("\n");
 }
-	int main()
-	{
-		double preisObstFeld[5] = {1.45, 0.85, 2.10, 1.35, 0.55};
-		double preisFischFeld[3] = {2.75, 1.65, 3.40};
-		/* Ausgabe */ 
-		ausgabeFeld(preisObstFeld, 5);
-		ausgabeFeld(preisFischFeld, 3);
-		return 0;
+
+int main()
+{
+	struct artikelTyp artikel;
+	/* Eingabe */ 
+	printf("Anzahl eingeben: ");
+	scanf("%d", &artikel.anzahl);
+	printf("Preis in Euro eingeben: ");
+	scanf("%lf", &artikel.preis);
+	printf("Bezeichnung eingeben: ");
+	scanf("%s", artikel.bezeichnung);
+	/* Einfache Ausgabe */ 
+	printf("%d %.2f %s\n", artikel.anzahl,
+	artikel.preis, artikel.bezeichnung);
+
+	return EXIT_SUCCESS;
 
 }
