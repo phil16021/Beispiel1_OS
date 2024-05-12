@@ -32,41 +32,79 @@ struct artikelTyp
 	char bezeichnung[30];
 };
 
-/* Definition einer Funktion */ 
-void AusgebenGesamt(double einzelpreis)
+/* Einfache Ausgabe einer Strukturvariablen */ 
+void ausgabeStruktur(struct artikelTyp art)
 {
-	double preisGesamt;
-
-	printf("Anzahl  Preis gesamt\n");	
-	for(int i = 0; i < 5; i++){
-		printf("%6d", i+1);
-		preisGesamt = einzelpreis * (i+1);
-		printf("%9.2f Euro\n", preisGesamt);
-	}
-	
+	printf("%d %.2f %s\n", art.anzahl,
+	art.preis, art.bezeichnung);
 }
-/* Einfache Ausgabe der Werte eines double-Felds */ 
-void ausgabeFeld(double *dFeld, int groesse)
+
+void eingabeStruktur(struct artikelTyp *artZeiger)
+{
+	int i = 1;
+		printf("Artikel %d, Anzahl: ", i);
+		scanf("%d", &(artZeiger->anzahl));
+		printf("Artikel %d, Preis: ", i);
+		scanf("%lf", &(artZeiger->preis));
+		printf("Artikel %d, Bezeichnung: ", i);
+		scanf("%s", artZeiger->bezeichnung);
+}
+
+void eingabeStrukturFeld(struct artikelTyp *artZeiger, int groesse)
+{
+	for(int i= 0; i<groesse; i++)
+	{
+		printf("Artikel %d, Anzahl: ", i+1);
+		scanf("%d", &(artZeiger+i)->anzahl);
+		printf("Artikel %d, Preis: ", i+1);
+		scanf("%lf", &(artZeiger+i)->preis);
+		printf("Artikel %d, Bezeichnung: ", i+1);
+		scanf("%s", (artZeiger+i)->bezeichnung);
+	}
+}
+/* Zuweisung für eine Strukturvariable */ 
+void zuweisungStruktur(struct artikelTyp *artZeiger)
+{
+	(*artZeiger).anzahl = 1;
+	artZeiger->preis = 0.95;
+	strcpy(artZeiger->bezeichnung, "Kiwi");
+}
+/* Einfache Ausgabe eines Felds von Strukturvariablen */ 
+void ausgabeStrukturFeld(struct artikelTyp *artFeld, int groesse)
 {
 	int index;
 	for(index = 0; index < groesse; index++)
-		printf("Wert %4d: %.2f\n", index+1, dFeld[index]);
-		printf("\n");
+	printf("%d %.2f %s\n", 	artFeld[index].anzahl,
+							artFeld[index].preis, 
+							artFeld[index].bezeichnung);
+}
+
+double SummierenRechnung(struct artikelTyp *artFeld, int groesse)
+{
+	double summeRechnung = 0.0;
+	for(int i = 0; i < groesse; i++)
+		summeRechnung += (artFeld + i)->preis * (artFeld + i)->anzahl;
+
+	return summeRechnung;
 }
 
 int main()
 {
-	struct artikelTyp artikel;
-	/* Eingabe */ 
-	printf("Anzahl eingeben: ");
-	scanf("%d", &artikel.anzahl);
-	printf("Preis in Euro eingeben: ");
-	scanf("%lf", &artikel.preis);
-	printf("Bezeichnung eingeben: ");
-	scanf("%s", artikel.bezeichnung);
-	/* Einfache Ausgabe */ 
-	printf("%d %.2f %s\n", artikel.anzahl,
-	artikel.preis, artikel.bezeichnung);
+	/* Deklaration mit Initialisierung */ 
+	struct artikelTyp artikelFeld[3] =
+	{ {2, 1.45, "Apfel"}, {4, 0.85, "Birne"} };
+
+
+	/* Ausgabe einer Variablen der Struktur */ 
+	// eingabeStruktur(artikelFeld);
+	// ausgabeStruktur(artikelFeld[0]);
+	/* Zuweisung einer Variablen der Struktur */ 
+	eingabeStrukturFeld(artikelFeld, 3);
+	/* Ausgabe des Felds von Variablen der Struktur */ 
+	printf("\n");
+	ausgabeStrukturFeld(artikelFeld, 3);
+	printf("Summe: %5.2f", SummierenRechnung(artikelFeld, 3));
+	printf("\n");
 
 	return EXIT_SUCCESS;
 
