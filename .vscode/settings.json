@@ -3,6 +3,7 @@
         "stdio.h": "c",
         "stdlib.h": "c",
         "beispiel1_os.h": "c",
-        "stdint.h": "c"
+        "stdint.h": "c",
+        "limits": "c"
     }
 }
