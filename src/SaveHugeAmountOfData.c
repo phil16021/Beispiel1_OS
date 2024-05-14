@@ -60,11 +60,11 @@ void Einfügen(int anzahl, int *array, int index, int wert)
 void Umdrehen(int anzahl, int *array)
 {
     int helpline;
-    for(int i = 0; i < anzahl / 2; i++)
+    for(int i = 0, k = anzahl -1; i < k; i++, k--)
     {
         helpline = array[i];
-        array[i] = array[anzahl - 1 - i];
-        array[anzahl - 1 - i] = helpline;
+        array[i] = array[k];
+        array[k] = helpline;
     }
 }
 
