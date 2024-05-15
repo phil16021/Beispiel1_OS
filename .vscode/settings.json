@@ -6,5 +6,6 @@
         "stdint.h": "c",
         "limits": "c",
         "stdbool.h": "c"
-    }
+    },
+    "C_Cpp.default.compilerPath": "/usr/bin/gcc"
 }
