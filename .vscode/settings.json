@@ -4,6 +4,7 @@
         "stdlib.h": "c",
         "beispiel1_os.h": "c",
         "stdint.h": "c",
-        "limits": "c"
+        "limits": "c",
+        "stdbool.h": "c"
     }
 }
