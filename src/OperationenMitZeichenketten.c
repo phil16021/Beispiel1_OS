@@ -61,10 +61,10 @@ void einfuegen(char *a, char *einfuegeText, int von)
     int i, aLaenge = (int)strlen(a), textLaenge = (int)strlen(einfuegeText);
     char zwischen[1000];
 
-    if(von < aLaenge)
+    if(von > aLaenge)
         von = aLaenge;
     
-    if(von > 0)
+    if(von < 0)
         return;
 
     a[aLaenge + textLaenge+1] = '\0';
@@ -86,6 +86,38 @@ void tauschenVonBis(char *a, char *einfuegeText, int von, int bis)
     einfuegen( a,  einfuegeText,  von);
 }
 
+void tauschenVonLaenge(char *a, char *einfuegeText, int von, int laenge)
+{
+    loeschenVonLaenge(a, von, laenge);
+    einfuegen( a,  einfuegeText,  von);
+}
+
+int position(char *textfeld, char *suchtext)
+{
+    int position, gefunden=0, textfeldLaenge = (int)strlen(textfeld), 
+                        suchtextLaenge = (int)strlen(suchtext);
+
+    for(int i = 0; i < textfeldLaenge-suchtextLaenge +1; i++)
+    {
+        position = i;
+        if(textfeld[i]==suchtext[0])
+        {
+            for(int j = i; j < suchtextLaenge+i; j++)
+            {
+                if(textfeld[j]!=suchtext[j-i])
+                {
+                    gefunden=0;
+                    break;
+                }
+                gefunden=1;
+            }
+            if(gefunden == 1)
+                return position;
+        }
+    }
+    return -1;
+}
+
 int main()
 {
     char text[50] = "0123456789";
@@ -105,16 +137,14 @@ int main()
     printf("Nach Loeschen: %s\n", text);
 
     einfuegen(text, "2345678", 2);
-
-    einfuegen(text, "2345678", 4);
     printf("Nach Einfuegen: %s\n", text);
     
-    // tauschenVonBis(text, "abcdef", 2, 5);
-    // printf("Nach Aendern: %s\n", text);
+    tauschenVonBis(text, "abcdef", 2, 5);
+    printf("Nach Aendern: %s\n", text);
     
-    // tauschenVonLaenge(text, "234", 2, 6);
-    // printf("Nach Aendern: %s\n", text);
-    // printf("Position: %d\n", position(text, "567"));
-    // printf("Position: %d\n", position(text, "566"));
+    tauschenVonLaenge(text, "234", 2, 6);
+    printf("Nach Aendern: %s\n", text);
+    printf("Position: %d\n", position(text, "567"));
+    printf("Position: %d\n", position(text, "566"));
     return 0;
 } 
