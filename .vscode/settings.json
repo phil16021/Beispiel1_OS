@@ -5,7 +5,8 @@
         "beispiel1_os.h": "c",
         "stdint.h": "c",
         "limits": "c",
-        "stdbool.h": "c"
+        "stdbool.h": "c",
+        "string.h": "c"
     },
     "C_Cpp.default.compilerPath": "/usr/bin/gcc"
 }
