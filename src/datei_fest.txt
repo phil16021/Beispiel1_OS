@@ -1,0 +1,5 @@
+     2     1.45 Apfel          
+     4     0.85 Birne          
+     1     0.95 Kiwi           
+     3     1.86 Banane         
+     2     3.35 Maunz      
