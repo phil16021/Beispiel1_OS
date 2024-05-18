@@ -1,0 +1,6 @@
+cx:                3.000    4.000i
+Wurzel(cx):        2.000    1.000i
+cx hoch 2:        -7.000   24.000i
+e hoch cx:       -13.129  -15.201i
+ln(cx):            1.609    0.927i
+cx konjugiert:     3.000   -4.000i
